@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useCountdown } from "@/app/_hooks/useCountdown";
 
-export function Countdown() {
+const Countdown = () => {
   const { minutes, seconds } = useCountdown(15);
 
   return (
@@ -25,4 +25,6 @@ export function Countdown() {
       </div>
     </motion.div>
   );
-}
+};
+
+export default Countdown;

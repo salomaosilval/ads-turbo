@@ -7,7 +7,7 @@ import { useVideo } from "@/app/_hooks/useVideo";
 import { Volume2, VolumeX } from "lucide-react";
 import { Button } from "../ui/button";
 
-export function VideoPlayer() {
+const VideoPlayer = () => {
   const {
     playing,
     muted,
@@ -61,4 +61,6 @@ export function VideoPlayer() {
       </Container>
     </section>
   );
-}
+};
+
+export default VideoPlayer;

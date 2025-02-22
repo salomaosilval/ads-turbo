@@ -1,38 +1,58 @@
 "use client";
 
-import { createContext, useState, useEffect } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
-type UTMParams = {
-  source?: string;
-  medium?: string;
-  campaign?: string;
-};
+interface UTMParams {
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  utm_content?: string;
+  utm_term?: string;
+}
 
-type UTMContextType = {
+interface UTMContextType {
   utmParams: UTMParams;
-  updateUtmParams: (params: UTMParams) => void;
-};
+  setUTMParams: (params: UTMParams) => void;
+  updateUtmParams: (params: Partial<UTMParams>) => void;
+}
 
 export const UTMContext = createContext<UTMContextType | undefined>(undefined);
 
-export const UTMProvider = ({ children }: { children: React.ReactNode }) => {
-  const [utmParams, setUtmParams] = useState<UTMParams>({});
+export function UTMProvider({ children }: { children: ReactNode }) {
+  const [utmParams, setUTMParams] = useState<UTMParams>({});
 
-  useEffect(() => {
-    const storedUtms = localStorage.getItem("utm_params");
-    if (storedUtms) {
-      setUtmParams(JSON.parse(storedUtms));
-    }
-  }, []);
-
-  const updateUtmParams = (params: UTMParams) => {
-    setUtmParams(params);
-    localStorage.setItem("utm_params", JSON.stringify(params));
+  const updateUtmParams = (params: Partial<UTMParams>) => {
+    setUTMParams((prev) => ({ ...prev, ...params }));
   };
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const utms: UTMParams = {};
+
+    ["source", "medium", "campaign", "content", "term"].forEach((param) => {
+      const value = params.get(`utm_${param}`);
+      if (value) utms[`utm_${param}` as keyof UTMParams] = value;
+    });
+
+    setUTMParams(utms);
+    localStorage.setItem("utmParams", JSON.stringify(utms));
+  }, []);
+
   return (
-    <UTMContext.Provider value={{ utmParams, updateUtmParams }}>
+    <UTMContext.Provider value={{ utmParams, setUTMParams, updateUtmParams }}>
       {children}
     </UTMContext.Provider>
   );
+}
+
+export const useUTM = () => {
+  const context = useContext(UTMContext);
+  if (!context) throw new Error("useUTM must be used within UTMProvider");
+  return context;
 };

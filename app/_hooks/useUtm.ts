@@ -13,12 +13,16 @@ export function useUtm() {
     const utmSource = searchParams.get("utm_source");
     const utmMedium = searchParams.get("utm_medium");
     const utmCampaign = searchParams.get("utm_campaign");
+    const utmContent = searchParams.get("utm_content");
+    const utmTerm = searchParams.get("utm_term");
 
     if (utmSource || utmMedium || utmCampaign) {
       context.updateUtmParams({
-        source: utmSource || undefined,
-        medium: utmMedium || undefined,
-        campaign: utmCampaign || undefined,
+        utm_source: utmSource || undefined,
+        utm_medium: utmMedium || undefined,
+        utm_campaign: utmCampaign || undefined,
+        utm_content: utmContent || undefined,
+        utm_term: utmTerm || undefined,
       });
     }
   }, [searchParams, context]);

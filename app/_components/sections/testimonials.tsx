@@ -5,7 +5,7 @@ import { Container } from "../ui/container";
 import { TESTIMONIALS } from "@/app/_lib/constants";
 import Image from "next/image";
 
-export function Testimonials() {
+const Testimonials = () => {
   return (
     <section className="py-16">
       <Container>
@@ -55,4 +55,6 @@ export function Testimonials() {
       </Container>
     </section>
   );
-}
+};
+
+export default Testimonials;

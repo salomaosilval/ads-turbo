@@ -4,9 +4,13 @@ import { motion } from "framer-motion";
 import { Container } from "../ui/container";
 import { Button } from "../ui/button";
 import { PRODUCTS } from "@/app/_lib/constants";
+import LeadForm from "../forms/lead-form";
+import { useLeadModal } from "@/app/_hooks/useLeadModal";
 import Image from "next/image";
 
-export function Products() {
+const Products = () => {
+  const { isOpen, onOpenChange, openModal } = useLeadModal();
+
   return (
     <section className="py-16 bg-muted/50">
       <Container>
@@ -47,7 +51,7 @@ export function Products() {
                     }).format(product.price / product.installments)}
                   </p>
                 </div>
-                <Button size="lg" className="w-full">
+                <Button size="lg" className="w-full" onClick={openModal}>
                   Quero Começar Agora
                 </Button>
               </div>
@@ -55,6 +59,9 @@ export function Products() {
           ))}
         </motion.div>
       </Container>
+      <LeadForm open={isOpen} onOpenChange={onOpenChange} />
     </section>
   );
-}
+};
+
+export default Products;

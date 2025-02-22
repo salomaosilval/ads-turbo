@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Container } from "../ui/container";
 import { Separator } from "../ui/separator";
 
-export function Footer() {
+const Footer = () => {
   return (
     <footer className="py-8 bg-muted/30">
       <Container>
@@ -79,4 +79,6 @@ export function Footer() {
       </Container>
     </footer>
   );
-}
+};
+
+export default Footer;

@@ -3,8 +3,12 @@
 import { motion } from "framer-motion";
 import { Container } from "../ui/container";
 import { Button } from "../ui/button";
+import LeadForm from "../forms/lead-form";
+import { useLeadModal } from "@/app/_hooks/useLeadModal";
 
-export function Headline() {
+const Headline = () => {
+  const { isOpen, onOpenChange, openModal } = useLeadModal();
+
   return (
     <section className="py-12 md:py-20 bg-gradient-to-b from-primary/10 to-background">
       <Container>
@@ -37,12 +41,15 @@ export function Headline() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.6 }}
           >
-            <Button size="lg" className="text-lg">
+            <Button size="lg" className="text-lg" onClick={openModal}>
               Quero Aumentar Minhas Vendas
             </Button>
           </motion.div>
         </motion.div>
       </Container>
+      <LeadForm open={isOpen} onOpenChange={onOpenChange} />
     </section>
   );
-}
+};
+
+export default Headline;
