@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Container } from "../ui/container";
+import Container from "../ui/container";
 import { TESTIMONIALS } from "@/app/_lib/constants";
 import Image from "next/image";
-import { useIsClient } from "@/app/_hooks/useIsClient";
+import useIsClient from "@/app/_hooks/useIsClient";
 
 const Testimonials = () => {
   const isClient = useIsClient();

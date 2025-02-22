@@ -4,13 +4,13 @@ import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { Label } from "../ui/label";
-import { useCheckoutForm } from "@/app/_hooks/useCheckoutForm";
+import useCheckoutForm from "@/app/_hooks/useCheckoutForm";
 import useFormMask from "@/app/_hooks/useFormMask";
 import { CheckoutFormData } from "@/app/_lib/schemas";
 import CreditCard from "../ui/credit-card";
 import { useState } from "react";
 
-export function CheckoutForm() {
+const CheckoutForm = () => {
   const { form, isSubmitting, onSubmit } = useCheckoutForm();
   const {
     handlePhoneChange,
@@ -127,4 +127,6 @@ export function CheckoutForm() {
       </Button>
     </form>
   );
-}
+};
+
+export default CheckoutForm;

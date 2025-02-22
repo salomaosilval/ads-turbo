@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 
-export function useLeadModal() {
+const useLeadModal = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openModal = useCallback(() => {
@@ -23,4 +23,6 @@ export function useLeadModal() {
     closeModal,
     onOpenChange,
   };
-}
+};
+
+export default useLeadModal;

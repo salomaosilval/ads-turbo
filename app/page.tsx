@@ -6,7 +6,7 @@ import Footer from "./_components/layout/footer";
 import Countdown from "./_components/layout/countdown";
 import { UTMProvider } from "./_context/utm-context";
 
-export default function Home() {
+const Home = () => {
   return (
     <UTMProvider>
       <main className="min-h-screen bg-background">
@@ -19,4 +19,6 @@ export default function Home() {
       </main>
     </UTMProvider>
   );
-}
+};
+
+export default Home;

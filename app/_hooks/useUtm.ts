@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { UTMContext } from "@/app/_context/utm-context";
 import { useSearchParams } from "next/navigation";
 
-export function useUtm() {
+const useUtm = () => {
   const context = useContext(UTMContext);
   const searchParams = useSearchParams();
 
@@ -28,4 +28,6 @@ export function useUtm() {
   }, [searchParams, context]);
 
   return context;
-}
+};
+
+export default useUtm;

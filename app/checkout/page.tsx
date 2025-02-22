@@ -1,17 +1,17 @@
 "use client";
 
-import { Container } from "@/app/_components/ui/container";
-import { CheckoutForm } from "@/app/_components/forms/checkout-form";
+import Container from "@/app/_components/ui/container";
+import CheckoutForm from "@/app/_components/forms/checkout-form";
 import { UTMProvider } from "@/app/_context/utm-context";
 import { motion } from "framer-motion";
 import { Button } from "@/app/_components/ui/button";
-import { useIsClient } from "@/app/_hooks/useIsClient";
+import useIsClient from "@/app/_hooks/useIsClient";
 import { UPSELL_PRODUCTS } from "@/app/_lib/constants";
-import { useCart } from "@/app/_hooks/useCart";
+import useCart from "@/app/_hooks/useCart";
 import { Check } from "lucide-react";
 import { cn } from "@/app/_lib/utils";
 
-export default function CheckoutPage() {
+const CheckoutPage = () => {
   const isClient = useIsClient();
   const { toggleProduct, isProductSelected, getTotal, getProducts } = useCart();
 
@@ -133,4 +133,6 @@ export default function CheckoutPage() {
       </main>
     </UTMProvider>
   );
-}
+};
+
+export default CheckoutPage;

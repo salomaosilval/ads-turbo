@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Container } from "../ui/container";
+import Container from "../ui/container";
 import { Button } from "../ui/button";
 import LeadForm from "../forms/lead-form";
-import { useLeadModal } from "@/app/_hooks/useLeadModal";
-import { useIsClient } from "@/app/_hooks/useIsClient";
+import useLeadModal from "@/app/_hooks/useLeadModal";
+import useIsClient from "@/app/_hooks/useIsClient";
 
 const Headline = () => {
   const { isOpen, onOpenChange, openModal } = useLeadModal();

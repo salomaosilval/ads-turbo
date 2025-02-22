@@ -7,7 +7,7 @@ interface CartProduct {
   price: number;
 }
 
-export function useCart() {
+const useCart = () => {
   const [selectedProducts, setSelectedProducts] = useState<number[]>([]);
   const basePrice = 997;
 
@@ -51,4 +51,6 @@ export function useCart() {
     getTotal,
     getProducts,
   };
-}
+};
+
+export default useCart;

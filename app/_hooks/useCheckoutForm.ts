@@ -5,7 +5,7 @@ import { useUTM } from "@/app/_context/utm-context";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export function useCheckoutForm() {
+const useCheckoutForm = () => {
   const { utmParams } = useUTM();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
@@ -29,4 +29,6 @@ export function useCheckoutForm() {
     isSubmitting,
     onSubmit: form.handleSubmit(onSubmit),
   };
-}
+};
+
+export default useCheckoutForm;

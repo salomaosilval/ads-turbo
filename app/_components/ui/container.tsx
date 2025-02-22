@@ -4,7 +4,7 @@ interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
-export function Container({ children, className, ...props }: ContainerProps) {
+const Container = ({ children, className, ...props }: ContainerProps) => {
   return (
     <div
       className={cn("w-full max-w-[1200px] mx-auto px-4 md:px-6", className)}
@@ -13,4 +13,6 @@ export function Container({ children, className, ...props }: ContainerProps) {
       {children}
     </div>
   );
-}
+};
+
+export default Container;

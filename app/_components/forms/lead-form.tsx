@@ -3,7 +3,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import { useLeadForm } from "@/app/_hooks/useLeadForm";
+import useLeadForm from "@/app/_hooks/useLeadForm";
 import useFormMask from "@/app/_hooks/useFormMask";
 
 interface LeadFormProps {

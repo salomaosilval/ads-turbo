@@ -5,7 +5,7 @@ import { useTheme } from "next-themes";
 import { Button } from "./button";
 import { motion } from "framer-motion";
 
-export function ThemeToggle() {
+const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
 
   return (
@@ -27,4 +27,6 @@ export function ThemeToggle() {
       </Button>
     </motion.div>
   );
-}
+};
+
+export default ThemeToggle;

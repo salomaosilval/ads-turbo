@@ -24,7 +24,7 @@ interface UTMContextType {
 
 export const UTMContext = createContext<UTMContextType | undefined>(undefined);
 
-export function UTMProvider({ children }: { children: ReactNode }) {
+export const UTMProvider = ({ children }: { children: ReactNode }) => {
   const [utmParams, setUTMParams] = useState<UTMParams>({});
 
   const updateUtmParams = (params: Partial<UTMParams>) => {
@@ -49,7 +49,7 @@ export function UTMProvider({ children }: { children: ReactNode }) {
       {children}
     </UTMContext.Provider>
   );
-}
+};
 
 export const useUTM = () => {
   const context = useContext(UTMContext);

@@ -1,13 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Container } from "../ui/container";
+import Container from "../ui/container";
 import { Button } from "../ui/button";
 import { PRODUCTS } from "@/app/_lib/constants";
 import LeadForm from "../forms/lead-form";
-import { useLeadModal } from "@/app/_hooks/useLeadModal";
+import useLeadModal from "@/app/_hooks/useLeadModal";
 import Image from "next/image";
-import { useIsClient } from "@/app/_hooks/useIsClient";
+import useIsClient from "@/app/_hooks/useIsClient";
 
 const Products = () => {
   const isClient = useIsClient();

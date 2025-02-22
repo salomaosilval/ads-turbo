@@ -5,7 +5,7 @@ import { useUTM } from "@/app/_context/utm-context";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export function useLeadForm(onOpenChange: (open: boolean) => void) {
+const useLeadForm = (onOpenChange: (open: boolean) => void) => {
   const { utmParams } = useUTM();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
@@ -30,4 +30,6 @@ export function useLeadForm(onOpenChange: (open: boolean) => void) {
     isSubmitting,
     onSubmit: form.handleSubmit(onSubmit),
   };
-}
+};
+
+export default useLeadForm;

@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 
-export function useVideo() {
+const useVideo = () => {
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(true);
   const [progress, setProgress] = useState(0);
@@ -32,4 +32,6 @@ export function useVideo() {
     handleMute,
     handleProgress,
   };
-}
+};
+
+export default useVideo;

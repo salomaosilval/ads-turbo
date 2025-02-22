@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Container } from "../ui/container";
+import Container from "../ui/container";
 import { Separator } from "../ui/separator";
-import { useIsClient } from "@/app/_hooks/useIsClient";
+import useIsClient from "@/app/_hooks/useIsClient";
 
 const Footer = () => {
   const isClient = useIsClient();

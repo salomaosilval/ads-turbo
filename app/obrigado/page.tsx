@@ -1,10 +1,10 @@
 "use client";
 
-import { Container } from "@/app/_components/ui/container";
+import Container from "@/app/_components/ui/container";
 import { Button } from "@/app/_components/ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useIsClient } from "@/app/_hooks/useIsClient";
+import useIsClient from "@/app/_hooks/useIsClient";
 import { CheckCircle } from "lucide-react";
 
 const ThankYouPage = () => {

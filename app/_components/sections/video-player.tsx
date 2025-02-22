@@ -2,11 +2,11 @@
 
 import { motion } from "framer-motion";
 import ReactPlayer from "react-player";
-import { Container } from "../ui/container";
-import { useVideo } from "@/app/_hooks/useVideo";
+import Container from "../ui/container";
+import useVideo from "@/app/_hooks/useVideo";
 import { Volume2, VolumeX } from "lucide-react";
 import { Button } from "../ui/button";
-import { useIsClient } from "@/app/_hooks/useIsClient";
+import useIsClient from "@/app/_hooks/useIsClient";
 
 const VideoPlayer = () => {
   const isClient = useIsClient();
