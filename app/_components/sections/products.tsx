@@ -7,9 +7,13 @@ import { PRODUCTS } from "@/app/_lib/constants";
 import LeadForm from "../forms/lead-form";
 import { useLeadModal } from "@/app/_hooks/useLeadModal";
 import Image from "next/image";
+import { useIsClient } from "@/app/_hooks/useIsClient";
 
 const Products = () => {
+  const isClient = useIsClient();
   const { isOpen, onOpenChange, openModal } = useLeadModal();
+
+  if (!isClient) return null;
 
   return (
     <section className="py-16 bg-muted/50">

@@ -2,9 +2,13 @@
 
 import { motion } from "framer-motion";
 import { useCountdown } from "@/app/_hooks/useCountdown";
+import { useIsClient } from "@/app/_hooks/useIsClient";
 
 const Countdown = () => {
+  const isClient = useIsClient();
   const { minutes, seconds } = useCountdown(15);
+
+  if (!isClient) return null;
 
   return (
     <motion.div

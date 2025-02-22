@@ -5,9 +5,13 @@ import { Container } from "../ui/container";
 import { Button } from "../ui/button";
 import LeadForm from "../forms/lead-form";
 import { useLeadModal } from "@/app/_hooks/useLeadModal";
+import { useIsClient } from "@/app/_hooks/useIsClient";
 
 const Headline = () => {
   const { isOpen, onOpenChange, openModal } = useLeadModal();
+  const isClient = useIsClient();
+
+  if (!isClient) return null;
 
   return (
     <section className="py-12 md:py-20 bg-gradient-to-b from-primary/10 to-background">

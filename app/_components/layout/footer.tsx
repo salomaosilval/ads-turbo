@@ -3,8 +3,13 @@
 import { motion } from "framer-motion";
 import { Container } from "../ui/container";
 import { Separator } from "../ui/separator";
+import { useIsClient } from "@/app/_hooks/useIsClient";
 
 const Footer = () => {
+  const isClient = useIsClient();
+
+  if (!isClient) return null;
+
   return (
     <footer className="py-8 bg-muted/30">
       <Container>

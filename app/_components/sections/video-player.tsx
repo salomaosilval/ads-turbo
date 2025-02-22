@@ -6,8 +6,11 @@ import { Container } from "../ui/container";
 import { useVideo } from "@/app/_hooks/useVideo";
 import { Volume2, VolumeX } from "lucide-react";
 import { Button } from "../ui/button";
+import { useIsClient } from "@/app/_hooks/useIsClient";
 
 const VideoPlayer = () => {
+  const isClient = useIsClient();
+
   const {
     playing,
     muted,
@@ -17,6 +20,8 @@ const VideoPlayer = () => {
     handleMute,
     handleProgress,
   } = useVideo();
+
+  if (!isClient) return null;
 
   return (
     <section className="py-8 md:py-12">
