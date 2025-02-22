@@ -43,6 +43,14 @@ const VideoPlayer = () => {
             onProgress={handleProgress}
             controls={true}
             className="absolute top-0 left-0"
+            loading="lazy"
+            config={{
+              youtube: {
+                playerVars: {
+                  loading: "lazy",
+                },
+              },
+            }}
           />
           <Button
             variant="ghost"

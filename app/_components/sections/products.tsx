@@ -34,6 +34,8 @@ const Products = () => {
                   src="/products/course.jpg"
                   alt={product.name}
                   fill
+                  priority
+                  loading="eager"
                   className="object-cover"
                 />
               </div>
