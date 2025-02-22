@@ -1,3 +1,5 @@
+"use client";
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LeadFormData, leadFormSchema } from "@/app/_lib/schemas";
@@ -17,7 +19,11 @@ const useLeadForm = (onOpenChange: (open: boolean) => void) => {
   async function onSubmit(data: LeadFormData) {
     setIsSubmitting(true);
     try {
-      console.log({ ...data, ...utmParams });
+      const userData = {
+        ...data,
+        ...utmParams,
+      };
+      localStorage.setItem("userData", JSON.stringify(userData));
       onOpenChange(false);
       router.push("/checkout");
     } finally {

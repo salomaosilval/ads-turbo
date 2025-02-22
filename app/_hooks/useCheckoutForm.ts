@@ -1,8 +1,10 @@
+"use client";
+
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckoutFormData, checkoutFormSchema } from "@/app/_lib/schemas";
 import { useUTM } from "@/app/_context/utm-context";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 const useCheckoutForm = () => {
@@ -14,10 +16,24 @@ const useCheckoutForm = () => {
     resolver: zodResolver(checkoutFormSchema),
   });
 
+  useEffect(() => {
+    const savedUserData = localStorage.getItem("userData");
+    if (savedUserData) {
+      const userData = JSON.parse(savedUserData);
+      form.setValue("name", userData.name);
+      form.setValue("email", userData.email);
+      form.setValue("phone", userData.phone);
+    }
+  }, [form]);
+
   async function onSubmit(data: CheckoutFormData) {
     setIsSubmitting(true);
     try {
-      console.log({ ...data, ...utmParams });
+      const checkoutData = {
+        ...data,
+        ...utmParams,
+      };
+      localStorage.setItem("checkoutData", JSON.stringify(checkoutData));
       router.push("/obrigado");
     } finally {
       setIsSubmitting(false);

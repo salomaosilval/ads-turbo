@@ -6,9 +6,18 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import useIsClient from "@/app/_hooks/useIsClient";
 import { CheckCircle } from "lucide-react";
-
+import { useEffect, useState } from "react";
+import { LeadFormData } from "@/app/_lib/schemas";
 const ThankYouPage = () => {
   const isClient = useIsClient();
+  const [userData, setUserData] = useState<LeadFormData | null>(null);
+
+  useEffect(() => {
+    const savedUserData = localStorage.getItem("userData");
+    if (savedUserData) {
+      setUserData(JSON.parse(savedUserData));
+    }
+  }, []);
 
   if (!isClient) return null;
 
@@ -36,7 +45,7 @@ const ThankYouPage = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            Obrigado pela sua compra!
+            Obrigado {userData?.name}!
           </motion.h1>
 
           <motion.p
@@ -45,8 +54,10 @@ const ThankYouPage = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
           >
-            Enviamos um email com suas instruções de acesso. Por favor,
-            verifique sua caixa de entrada (e spam, se necessário).
+            Enviamos um email para{" "}
+            <span className="font-bold text-primary">{userData?.email}</span>{" "}
+            com suas instruções de acesso. Por favor, verifique sua caixa de
+            entrada (e spam, se necessário).
           </motion.p>
 
           <motion.div
