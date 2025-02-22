@@ -30,3 +30,20 @@ export const TESTIMONIALS: Testimonial[] = [
     image: "/testimonials/2.png",
   },
 ];
+
+export const UPSELL_PRODUCTS = [
+  {
+    id: 1,
+    name: "Mentoria Individual",
+    description: "1 hora de mentoria individual para acelerar seus resultados",
+    price: 297,
+    originalPrice: 497,
+  },
+  {
+    id: 2,
+    name: "Templates Premium",
+    description: "Pack com 50 templates prontos para suas campanhas",
+    price: 147,
+    originalPrice: 297,
+  },
+];

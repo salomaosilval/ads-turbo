@@ -1,13 +1,10 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../ui/dialog";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import { useUTM } from "@/app/_context/utm-context";
-import { LeadFormData, leadFormSchema } from "@/app/_lib/schemas";
-import { useState } from "react";
+import { useLeadForm } from "@/app/_hooks/useLeadForm";
+import useFormMask from "@/app/_hooks/useFormMask";
 
 interface LeadFormProps {
   open: boolean;
@@ -15,23 +12,8 @@ interface LeadFormProps {
 }
 
 const LeadForm = ({ open, onOpenChange }: LeadFormProps) => {
-  const { utmParams } = useUTM();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const form = useForm<LeadFormData>({
-    resolver: zodResolver(leadFormSchema),
-  });
-
-  async function onSubmit(data: LeadFormData) {
-    setIsSubmitting(true);
-    try {
-      // Aqui você implementaria a chamada para sua API
-      console.log({ ...data, ...utmParams });
-      onOpenChange(false);
-    } finally {
-      setIsSubmitting(false);
-    }
-  }
+  const { form, isSubmitting, onSubmit } = useLeadForm(onOpenChange);
+  const { handlePhoneChange } = useFormMask();
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -39,25 +21,32 @@ const LeadForm = ({ open, onOpenChange }: LeadFormProps) => {
         <DialogHeader>
           <DialogTitle>Quero saber mais</DialogTitle>
         </DialogHeader>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={onSubmit} className="space-y-4">
           <Input
             placeholder="Nome completo"
+            maxLength={100}
             {...form.register("name")}
             error={form.formState.errors.name?.message}
           />
           <Input
             placeholder="Email"
             type="email"
+            maxLength={100}
             {...form.register("email")}
             error={form.formState.errors.email?.message}
           />
           <Input
             placeholder="Telefone"
+            maxLength={15}
             {...form.register("phone")}
+            onChange={(e) =>
+              handlePhoneChange(e, form.setValue.bind(null, "phone"))
+            }
             error={form.formState.errors.phone?.message}
           />
           <Input
             placeholder="Nome da empresa"
+            maxLength={100}
             {...form.register("business")}
             error={form.formState.errors.business?.message}
           />
