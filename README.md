@@ -1,36 +1,151 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ads Turbo - Landing Page VSL
 
-## Getting Started
+Este é um projeto Next.js que implementa uma Landing Page VSL (Video Sales Letter) com foco em performance e conversão. O projeto foi desenvolvido utilizando as melhores práticas de desenvolvimento web e otimização para dispositivos móveis.
 
-First, run the development server:
+## 🚀 Funcionalidades
+
+### Gerenciamento de UTMs
+
+- Sistema completo de captura e preservação de parâmetros UTM através do contexto React
+- Persistência de UTMs entre páginas usando localStorage
+- Repasse automático de UTMs entre checkout e página de obrigado
+
+### Player de Vídeo Responsivo
+
+- Integração com YouTube usando react-player
+- Controles personalizados para volume e progresso
+- Otimização de carregamento com lazy loading
+
+### Seção de Produtos
+
+- Display de produtos com preços e condições
+- Sistema de upsell na página de checkout
+- Formatação de preços em BRL
+
+### Seção de Testemunhos
+
+- Grid responsivo de depoimentos
+- Otimização de imagens com next/image
+- Animações suaves com Framer Motion
+
+### Footer Legal
+
+- Links para documentos legais
+- Informações de contato
+- Grid responsivo com 4 colunas
+
+## 🛠 Tecnologias Utilizadas
+
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- React Hook Form + Zod
+- React Player
+
+## 📦 Como Executar Localmente
+
+1. Clone o repositório
+
+```bash
+git clone https://github.com/seu-usuario/ads-turbo.git
+```
+
+2. Instale as dependências
+
+```bash
+npm install
+# ou
+yarn install
+```
+
+3. Execute o servidor de desenvolvimento
 
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Acesse `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🎯 Otimizações Implementadas
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Performance
 
-## Learn More
+- Lazy loading de imagens com next/image
+- Componentes client-side com lazy loading
+- Fontes otimizadas com next/font
+- Minificação de assets
 
-To learn more about Next.js, take a look at the following resources:
+### SEO
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Meta tags otimizadas
+- Estrutura semântica HTML
+- Open Graph tags para compartilhamento
+- Locale configurado para pt-BR
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Acessibilidade
 
-## Deploy on Vercel
+- Labels e ARIA attributes
+- Contraste de cores adequado
+- Navegação por teclado
+- Suporte a screen readers
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Mobile First
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Design responsivo
+- Otimização de imagens para mobile
+- Touch targets adequados
+- Performance otimizada para 3G
+
+## 🌐 Deploy
+
+O projeto está deployado na Vercel e pode ser acessado em: [https://ads-turbo.vercel.app](https://ads-turbo.vercel.app)
+
+## 📊 Métricas Lighthouse
+
+- Performance: 70+
+- Acessibilidade: 90+
+- Boas Práticas: 70+
+- SEO: 100
+
+### Desktop
+
+![Lighthouse Desktop](https://res.cloudinary.com/dv61ldehl/image/upload/v1740342736/Captura_de_Tela_2025-02-23_a%CC%80s_16.31.01_i4pfrm.png)
+
+### Mobile
+
+![Lighthouse Mobile](https://res.cloudinary.com/dv61ldehl/image/upload/v1740342736/Captura_de_Tela_2025-02-23_a%CC%80s_16.31.53_b6smnv.png)
+
+## 📝 Decisões Técnicas
+
+1. **Arquitetura de Componentes**
+
+   - Separação clara entre componentes de UI e lógica de negócio
+   - Hooks customizados para gerenciamento de estado
+   - Context API para dados globais
+
+2. **Gerenciamento de Estado**
+
+   - Context API para UTMs
+   - React Hook Form para formulários
+   - Custom hooks para lógica reutilizável
+   - LocalStorage para persistência
+
+3. **Otimização de Performance**
+
+   - Componente useIsClient para hidratação controlada
+   - Lazy loading estratégico
+   - Otimização de assets
+   - Caching de dados
+
+4. **Responsividade**
+   - Abordagem mobile-first
+   - Breakpoints customizados
+   - Grid system flexível
+   - Imagens otimizadas
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
